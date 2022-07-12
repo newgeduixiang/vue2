@@ -5,7 +5,7 @@
         <!-- 首页 -->
         <router-view v-if="$store.state.userinfo.username"></router-view>
         <!-- 登录页面 -->
-        <login v-else></login>
+        <Login v-else></Login>
     </div>
 </template>
 
@@ -20,14 +20,23 @@ export default {
     // 页面创建完毕
     created() {
         // 获取用户信息
-        // this.$store.dispatch('userinfo');
+        this.$store.dispatch('userinfo');
     }
 }
 
 </script>
 
-<style>
-
+<style lang="scss">
+html,
+body {
+    background-color: #efefef;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#app {
+    height: 100%;
+}
 </style>
 
 

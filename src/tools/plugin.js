@@ -1,18 +1,33 @@
-// 引入 ElemenUI 库
+import Axios from 'axios';
+
 import ElementUI from 'element-ui';
 // 引入样式
-import 'element-ui/lib/theme-chalk/index.css';
-// 引入 封装的 axiox
-import request from './request';
+import 'element-ui/lib/theme-chalk/index.css'
 
 
-// 暴漏数据
+// 创建新的axios
+export let axios = Axios.create();
+// 请求拦截器
+axios.interceptors.request.use(config => {
+    // 登录请求不需要携带token
+    if (config.url === '/data/login') {
+        return config;
+    }
+    // token可以添加到query上，也可以添加到headers上
+    config.headers.token = sessionStorage.token
+    return config;
+})
+// 响应拦截器
+axios.interceptors.response.use(config => {
+    return config.data;
+})
+
 export default {
-    // 插件为包含 install 方法的对象或函数；参数是vue 实例对象
     install(Vue) {
-        // 安装 Element
-        Vue.use(ElementUI);
-        // 安装拦截器
-        Vue.prototype.$http = request;
+        // 安装
+        Vue.use(ElementUI)
+        // 安装axios
+        Vue.prototype.$http = axios;
     }
 }
+

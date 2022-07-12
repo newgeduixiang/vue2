@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { Message } from "element-ui";
-import { axios } from '../tools/request';
+import { axios } from '../tools/plugin';
+import { addRoutes } from '../router';
 
 Vue.use(Vuex)
 
@@ -25,6 +26,8 @@ export default new Vuex.Store({
             state.departments = info.departments;
             // 存储首页数据
             state.main = info.main;
+            // 设置权限路由
+            addRoutes(info.userinfo.level);
         }
     },
 
