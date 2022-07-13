@@ -3,39 +3,7 @@ import Router from 'vue-router'
 import Home from '../views/Home'
 import Main from '../views/Main'
 
-Vue.use(Router)
-
-
-
-// let router = new Router({
-// 	routes: [
-// 		{
-// 			path: '/',
-// 			component: Home,
-// 			children: [
-// 				// 员工模块
-// 				{ path: '/staff/create', component: () => import('../views/staff/Create') },
-// 				{ path: '/staff/list/:page', component: () => import('../views/staff/List') },
-// 				// 部门模块
-// 				{ path: '/department/create', component: () => import('../views/department/Create') },
-// 				{ path: '/department/list', component: () => import('../views/department/List') },
-// 				// 测试模块
-// 				{ path: '/exam/create', component: () => import('../views/exam/Create') },
-// 				{ path: '/exam/list/:page', component: () => import('../views/exam/List') },
-// 				{ path: '/exam/edit/:id', component: () => import('../views/exam/Edit') },
-// 				{ path: '/exam/score/:id', component: () => import('../views/exam/Score') },
-// 				{ path: '/exam/statics/:id', component: () => import('../views/exam/Statics') },
-// 				// 个人中心
-// 				{ path: '/user/info', component: () => import('../views/user/Info') },
-// 				{ path: '/user/password', component: () => import('../views/user/Password') },
-// 				{ path: '/user/avatar', component: () => import('../views/user/Avatar') },
-// 				// 默认页面
-// 				{ path: '*', component: Main }
-// 			]
-// 		}
-// 	]
-// })
-
+Vue.use(Router);
 
 // 定义公共路由规则
 const routes = [
@@ -72,7 +40,7 @@ export function addRoutes(level) {
 				{ path: '/exam/list/:page', name: '首页,测试管理,测试列表', component: () => import('../views/exam/List') },
 				{ path: '/exam/edit/:id', name: '首页,测试管理,编辑测试', component: () => import('../views/exam/Edit') },
 				{ path: '/exam/score/:id', name: '首页,测试管理,测试上分', component: () => import('../views/exam/Score') },
-				{ path: '/exam/statics/:id', name: '首页,测试管理,测试统计', component: () => import('../views/exam/Statics') }
+				{ path: '/exam/statistics/:id', name: '首页,测试管理,测试统计', component: () => import('../views/exam/statistics') }
 			)
 			break;
 		case 2:
@@ -85,7 +53,7 @@ export function addRoutes(level) {
 				{ path: '/exam/list/:page', name: '首页,测试管理,测试列表', component: () => import('../views/exam/List') },
 				{ path: '/exam/edit/:id', name: '首页,测试管理,编辑测试', component: () => import('../views/exam/Edit') },
 				{ path: '/exam/score/:id', name: '首页,测试管理,测试上分', component: () => import('../views/exam/Score') },
-				{ path: '/exam/statics/:id', name: '首页,测试管理,测试统计', component: () => import('../views/exam/Statics') }
+				{ path: '/exam/statistics/:id', name: '首页,测试管理,测试统计', component: () => import('../views/exam/statistics') }
 			)
 			break;
 		case 3:
@@ -94,7 +62,12 @@ export function addRoutes(level) {
 				{ path: '/staff/list/:page', name: '首页,员工管理,员工列表', component: () => import('../views/staff/List') },
 				// 测试模块
 				{ path: '/exam/list/:page', name: '首页,测试管理,测试列表', component: () => import('../views/exam/List') },
-				{ path: '/exam/statics/:id', name: '首页,测试管理,测试统计', component: () => import('../views/exam/Statics') }
+				{ path: '/exam/statistics/:id', name: '首页,测试管理,测试统计', component: () => import('../views/exam/statistics') },
+				// 分数详情
+				{ path: '/exam/item/detail/:id', name: '首页,测试管理,分数详情', component: () => import('../views/exam/ItemDetail') },
+				// 员工个人分数统计
+				{ path: '/exam/item/score', name: '首页,测试管理,分数统计', component: () => import('../views/exam/ItemScore') }
+
 			)
 	}
 	router.addRoutes(routes);

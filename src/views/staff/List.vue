@@ -32,8 +32,6 @@
             :page-sizes="[10, 20, 50, 100]"
             @size-change="sizeChange"
             @current-change="pageChange"
-            @prev-click="pageChange"
-            @next-click="pageChange"
         ></el-pagination>
         <!-- 模态框(!! 布尔值语法糖) -->
         <el-dialog :visible="!!staffData._id" title="编辑员工信息" @close="closeDialog"> 

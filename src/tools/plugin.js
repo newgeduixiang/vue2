@@ -1,8 +1,15 @@
 import Axios from 'axios';
-
+// 引入ElementUI
 import ElementUI from 'element-ui';
 // 引入样式
 import 'element-ui/lib/theme-chalk/index.css'
+
+// 引入富文本 Quill
+import VueQuillEditor from "vue-quill-editor";
+// 引入富文本编辑器样式
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
 
 
 // 创建新的axios
@@ -28,6 +35,8 @@ export default {
         Vue.use(ElementUI)
         // 安装axios
         Vue.prototype.$http = axios;
+        // 安装富文本
+        Vue.use(VueQuillEditor);
     }
 }
 
