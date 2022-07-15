@@ -3,13 +3,13 @@
     <el-container class="page-home">
         <el-aside width="200px">
             <el-menu background-color="#545c64" text-color="#fff" :router="true">
-                <h4>员工管理培训系统</h4>
+                <router-link tag="h2" to="/">员工管理培训系统</router-link>
                 <el-submenu v-for="item in menu" :key="item.link" :index="item.link">
                     <template #title>
                         <i :class="'el-icon-s-' + item.icon"></i>
                         <span>{{item.title}}</span>
                         </template>
-                    <el-menu-item min-width="0" v-for="childItem in item.children" :key="childItem.link" :index="'/' + item.link + '/' + childItem.link">{{childItem.title}}</el-menu-item>
+                    <el-menu-item min-width="0" v-for="childItem in item.children" :key="childItem.link" :index="item.link + '/' + childItem.link">{{childItem.title}}</el-menu-item>
                 </el-submenu>
             </el-menu>
         </el-aside>
@@ -34,7 +34,7 @@
                         <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>{{userinfo.username}}</el-dropdown-item>
+                        <el-dropdown-item>{{userinfo.name}}</el-dropdown-item>
                         <el-dropdown-item command="/user/avatar">修改头像</el-dropdown-item>
                         <el-dropdown-item command="/user/info">个人中心</el-dropdown-item>
                         <el-dropdown-item command="/user/password">账号设置</el-dropdown-item>
@@ -94,7 +94,7 @@ export default {
                 this.menu = [
                     {
                         title: "员工管理",
-                        link: 'staff',
+                        link: '/staff',
                         icon: 'custom',
                         children: [
                             {title: '添加员工', link: 'create'},
@@ -103,7 +103,7 @@ export default {
                     },
                     {
                         title: '部门管理',
-                        link: 'department',
+                        link: '/department',
                         icon: 'cooperation',
                         children: [
                             {title: '添加部门', link: 'create'},
@@ -112,7 +112,7 @@ export default {
                     },
                     { 
                         title: '测试管理', 
-                        link: 'exam',
+                        link: '/exam',
                         icon: 'order',
                         children: [
                             { title: '测试列表', link: 'list/1' },
@@ -125,7 +125,7 @@ export default {
                 this.menu = [
                     { 
                         title: '员工管理', 
-                        link: 'staff',
+                        link: '/staff',
                         icon: 'custom',
                         children: [
                             { title: '添加员工', link: 'create' },
@@ -134,7 +134,7 @@ export default {
                     },
                     { 
                         title: '测试管理', 
-                        link: 'exam',
+                        link: '/exam',
                         icon: 'order',
                         children: [
                             { title: '添加测试', link: 'create' },
@@ -147,19 +147,11 @@ export default {
             case 3:
                 this.menu = [
                     { 
-                        title: '员工管理', 
-                        link: 'staff',
-                        icon: 'custom',
+                        title: '我的管理', 
+                        link: '',
                         children: [
-                            { title: '员工列表', link: 'list/1' },
-                        ] 
-                    },
-                    { 
-                        title: '测试管理', 
-                        link: 'exam',
-                        icon: 'order',
-                        children: [
-                            { title: '测试列表', link: 'list/1' },
+                            { title: '员工列表', link: 'staff/list/1' },
+                            { title: '测试列表', link: 'exam/list/1' },
                         ] 
                     }
                 ]
@@ -174,9 +166,10 @@ export default {
     .el-aside {
         background-color: #545c64;
         color: #fff;
-        h4 {
+        h2 {
             font-weight: normal;    
             text-align: center;
+            font-size: 20px;
         }
     }
     .el-header {
@@ -198,12 +191,19 @@ export default {
                 color: #409EFF;
             }
         }
-
+        .el-dropdown {
+            margin-left: 50px;
+            margin-right: 20px;
+        }
     }
-    .el-mian {
-        margin-top: 10px;
-        margin-left: 10px;
+    .el-main {
+        margin-top: 15px;
+        margin-left: 15px;
+        padding: 0;
+    }
+    .page-inner {
         background-color: #fff;
+        padding: 20px;
     }
 
     // 所有页面title

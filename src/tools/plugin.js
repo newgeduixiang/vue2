@@ -11,6 +11,13 @@ import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
 import 'quill/dist/quill.bubble.css';
 
+// 引入echarts
+import Echarts from 'vue-echarts';
+// 引入安装方法
+import { use } from 'echarts';
+// 引入渲染器
+import { CanvasRenderer } from 'echarts/renderers';
+
 
 // 创建新的axios
 export let axios = Axios.create();
@@ -37,6 +44,10 @@ export default {
         Vue.prototype.$http = axios;
         // 安装富文本
         Vue.use(VueQuillEditor);
+        // 全局组件安装 echarts
+        Vue.component('v-echarts', Echarts);
+        // 安装渲染器
+        use([CanvasRenderer]);
     }
 }
 

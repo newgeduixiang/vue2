@@ -86,8 +86,8 @@ export default {
             // 解构动态路由参数
             let { params } = this.$route;
             // 发送请求，传递页码，每页显示个数，部门信息
-            // 添加部门信息
-            params.department = this.$store.state.userinfo.department;
+            // // 添加部门信息
+            // params.department = this.$store.state.userinfo.department;
             // 添加每页显示个数
             params.pageSize = this.pageSize;
             // 发送获取数据
